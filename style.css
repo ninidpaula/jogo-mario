@@ -65,11 +65,10 @@ boton:hover {
 button: start {
     display: block;
 }
-.game-over {
-    
+.game-over {  
     width: 100%;
     height: 100vh;
-    background: red;
+    background: rgba(0, 0, 0, 0.2);
     display: none;
     aling-items: center;
     justtify-content: center;
