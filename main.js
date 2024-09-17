@@ -58,3 +58,7 @@ if(pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
 },10);
 
 document.addEventListener("keydown", jump);
+
+const restartGame = () => {
+  window.location.reload();
+}
