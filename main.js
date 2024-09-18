@@ -1,25 +1,26 @@
-
 const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const nuvem = document.querySelector(".nuvem");
 const startButton = document.querySelector(".start");
 const gameOverScreen = document.querySelector(".game-over");
+const scoreElement = document.querySelector("score")
 
 audioStart = Audio("./sound/audio_theme.mp3");
 const gameOverSound = new Audio("./sound/audio.gameover.mp3");
 
 let gameStarted = false;
+let score = 0;
 
 const gameStarted = () => {
-gameStarted = true;
-audioStart.play();
+  gameStarted = true;
+  audioStart.play();
 
-pipe.style.animation = "pipe-animation 1.5s infinite linear";
+  pipe.style.animation = "pipe-animation 1.5s infinite linear";
 
-startButton.style.display = "none";
-mario.style.opacity = "1";
-pipe.style.opacity = "1";
-nuvem.style.opacity = "1";
+  startButton.style.display = "none";
+  mario.style.opacity = "1";
+  pipe.style.opacity = "1";
+  nuvem.style.opacity = "1";
 
 }
 
@@ -32,6 +33,11 @@ const jump = () => {
     }
     ,500);
 }
+}
+
+const updateScore = () => {
+  score += 1;
+  scoreElement.textContent = score;
 }
 
 const loop = setInterval (() => {
@@ -54,6 +60,9 @@ if(pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
   
     clearInterval(loop);
     gameOverScreen.style.display = "flex";
+  } else if (pipePosition < 0 && gameStarted) {
+    updateScore();
+  pipe.style.left = '';
   }
 },10);
 
